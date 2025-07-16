@@ -1,7 +1,7 @@
 import { routeTree } from './routeTree.gen'
 import { RouterProvider, createRouter } from '@tanstack/react-router'
 import { createRoot } from 'react-dom/client'
-import '@/assets/styles.css'
+import '@/assets/styles/tailwind.css'
 
 const router = createRouter({
   routeTree,

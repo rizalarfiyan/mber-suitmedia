@@ -1,3 +1,4 @@
+import Logo from './logo'
 import useBodyScrollLock from '@/hooks/use-body-scroll-lock'
 import useHeaderVisibility from '@/hooks/use-header-visibility'
 import useIsMobile from '@/hooks/use-is-mobile'
@@ -46,26 +47,34 @@ const Header = () => {
     <>
       <header
         className={cn(
-          'bg-primary-600 fixed top-0 right-0 left-0 z-50 translate-y-0 text-white transition-transform duration-300 ease-in-out',
+          'bg-primary-600 shadow-smooth transition-[transform, colors] fixed top-0 right-0 left-0 z-50 translate-y-0 text-white duration-300 ease-in-out',
           !isHeaderVisible && '-translate-y-full',
-          shouldChangeBg && 'bg-primary-600/80 shadow-md backdrop-blur-sm',
+          shouldChangeBg && 'bg-primary-600/80 backdrop-blur-sm',
         )}>
         <div className="container mx-auto flex items-center justify-between px-6 py-4">
-          <Link to="/" className="flex items-center space-x-2">
-            Logo
-          </Link>
+          <Logo />
           <nav className="hidden items-center space-x-8 md:flex">
-            {menus.map(({ title, to }) => (
-              <Link key={to} to={to} className="hover:text-primary-100 text-white transition-colors duration-200">
-                {title}
-              </Link>
-            ))}
+            <ul className="list-none space-x-2">
+              {menus.map(({ title, to }) => (
+                <li key={to} className="inline-block">
+                  <Link
+                    to={to}
+                    activeProps={{
+                      className: 'before:!origin-left before:!scale-x-100 !bg-primary-700/30',
+                    }}
+                    className="hover:bg-primary-700/30 relative block rounded-md px-4 py-2 text-white no-underline transition-colors duration-300 before:absolute before:bottom-0 before:left-0 before:h-0.5 before:w-full before:origin-right before:scale-x-0 before:bg-white before:transition-transform before:duration-500 before:ease-in-out before:content-[''] hover:before:origin-left hover:before:scale-x-100">
+                    {title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </nav>
-          <div className="md:hidden">
-            <button onClick={toggleMobileMenu} className="text-slate-800 focus:outline-none" aria-label="Toggle menu">
-              {isMobileMenuOpen ? <X className="size-6" /> : <Menu className="size-6" />}
-            </button>
-          </div>
+          <button
+            onClick={toggleMobileMenu}
+            className="hover:bg-primary-700/30 cursor-pointer rounded-md p-2 text-white transition-colors duration-300 focus:outline-none md:hidden"
+            aria-label="Toggle menu">
+            {isMobileMenuOpen ? <X className="size-6" /> : <Menu className="size-6" />}
+          </button>
         </div>
       </header>
       <div
@@ -73,17 +82,22 @@ const Header = () => {
           'fixed inset-0 z-40 transform bg-white transition-transform duration-300 ease-in-out md:hidden',
           isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full',
         )}>
-        <div className="flex h-full flex-col items-center justify-center space-y-8">
+        <ul className="flex h-full list-none flex-col items-center justify-center space-y-6">
           {menus.map(({ title, to }) => (
-            <Link
-              key={to}
-              to={to}
-              onClick={closeMobileMenu}
-              className="text-3xl font-semibold text-slate-700 hover:text-slate-900">
-              {title}
-            </Link>
+            <li key={to} className="inline-block">
+              <Link
+                key={to}
+                to={to}
+                onClick={closeMobileMenu}
+                activeProps={{
+                  className: 'before:!origin-left before:!scale-x-100 !bg-primary-200/30',
+                }}
+                className="text-secondary-700 hover:bg-primary-200/30 hover:text-secondary-900 before:bg-primary-600 relative block rounded-md px-5 py-2 text-2xl font-semibold no-underline transition-colors duration-300 before:absolute before:bottom-0 before:left-0 before:h-1 before:w-full before:origin-right before:scale-x-0 before:transition-transform before:duration-500 before:ease-in-out before:content-[''] hover:before:origin-left hover:before:scale-x-100">
+                {title}
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </>
   )

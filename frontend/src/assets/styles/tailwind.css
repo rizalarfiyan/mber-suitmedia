@@ -26,6 +26,8 @@
     --color-secondary-950: #020618;
 
     --leading-sm: 1.1;
+
+    --shadow-smooth: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 }
 
 @layer utilities {
