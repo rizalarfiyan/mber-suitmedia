@@ -21,9 +21,9 @@ const PageContext = createContext<PageContextProps | undefined>(undefined)
 const parseSort = (sort: SortType): string => {
   switch (sort) {
     case 'oldest':
-      return '-published_at'
-    default:
       return 'published_at'
+    default:
+      return '-published_at'
   }
 }
 
