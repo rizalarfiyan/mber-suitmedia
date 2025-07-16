@@ -1,17 +1,15 @@
 import { DEFAULT_PAGE_SIZE, DEFAULT_SORT } from '@/constants'
 import { useAxios } from '@/libs/axios'
-import { createContext, useMemo, useState } from 'react'
+import { Route } from '@/routes/_public/ideas'
+import { createContext, useMemo } from 'react'
 import type { IdeasResponse } from './types'
 import type { ListResponse, SortType } from '@/types'
 import type { PropsWithChildren } from 'react'
 
 interface PageContextProps {
   perPage: number
-  setPerPage: (perPage: number) => void
   page: number
-  setPage: (page: number) => void
   sort: SortType
-  setSort: (sort: SortType) => void
   isLoading: boolean
   error?: string
   totalPage: number
@@ -30,9 +28,15 @@ const parseSort = (sort: SortType): string => {
 }
 
 const Provider = ({ children }: PropsWithChildren) => {
-  const [perPage, setPerPage] = useState(DEFAULT_PAGE_SIZE.value)
-  const [page, setPage] = useState(1)
-  const [sort, setSort] = useState<SortType>(DEFAULT_SORT.value)
+  const params = Route.useSearch()
+  const { perPage, page, sort } = useMemo(
+    () => ({
+      perPage: params.perPage ?? DEFAULT_PAGE_SIZE.value,
+      page: params.page ?? 1,
+      sort: params.sort ?? DEFAULT_SORT.value,
+    }),
+    [params],
+  )
 
   const [{ data, error, loading }] = useAxios<ListResponse<IdeasResponse>>({
     url: '/ideas',
@@ -49,11 +53,8 @@ const Provider = ({ children }: PropsWithChildren) => {
   const values = useMemo(
     () => ({
       perPage,
-      setPerPage,
       page,
-      setPage,
       sort,
-      setSort,
       isLoading: loading,
       error: error ? 'Failed to fetch ideas data' : undefined,
       totalPage: data?.meta?.total || 0,

@@ -5,7 +5,7 @@ import { Route } from '@/routes/_public/ideas'
 import { useNavigate } from '@tanstack/react-router'
 
 const Action = () => {
-  const { page, perPage, totalPage } = usePage()
+  const { page, perPage, totalPage, sort, isLoading } = usePage()
   const navigate = useNavigate({ from: Route.fullPath })
 
   const updateQuery = (name: string, value: unknown) => {
@@ -20,11 +20,20 @@ const Action = () => {
       <div className="flex items-center justify-center gap-4">
         <Select
           onValueChange={val => updateQuery('perPage', val)}
+          defaultValue={perPage}
+          disabled={isLoading}
           className="w-36"
           label="Show per page"
           options={PAGE_SIZE_LIST}
         />
-        <Select onValueChange={val => updateQuery('sort', val)} className="w-36" label="Short by" options={SORT_LIST} />
+        <Select
+          onValueChange={val => updateQuery('sort', val)}
+          defaultValue={sort}
+          disabled={isLoading}
+          className="w-36"
+          label="Short by"
+          options={SORT_LIST}
+        />
       </div>
     </div>
   )
