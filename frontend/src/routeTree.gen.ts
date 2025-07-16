@@ -11,181 +11,212 @@
 import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PublicRouteImport } from './routes/_public'
 
-const WorkLazyRouteImport = createFileRoute('/work')()
-const ServicesLazyRouteImport = createFileRoute('/services')()
-const IdeasLazyRouteImport = createFileRoute('/ideas')()
-const ContactLazyRouteImport = createFileRoute('/contact')()
-const CareersLazyRouteImport = createFileRoute('/careers')()
-const AboutLazyRouteImport = createFileRoute('/about')()
-const IndexLazyRouteImport = createFileRoute('/')()
+const PublicIndexLazyRouteImport = createFileRoute('/_public/')()
+const PublicWorkLazyRouteImport = createFileRoute('/_public/work')()
+const PublicServicesLazyRouteImport = createFileRoute('/_public/services')()
+const PublicIdeasLazyRouteImport = createFileRoute('/_public/ideas')()
+const PublicContactLazyRouteImport = createFileRoute('/_public/contact')()
+const PublicCareersLazyRouteImport = createFileRoute('/_public/careers')()
+const PublicAboutLazyRouteImport = createFileRoute('/_public/about')()
 
-const WorkLazyRoute = WorkLazyRouteImport.update({
-  id: '/work',
-  path: '/work',
+const PublicRoute = PublicRouteImport.update({
+  id: '/_public',
   getParentRoute: () => rootRouteImport,
-} as any).lazy(() => import('./routes/work.lazy').then((d) => d.Route))
-const ServicesLazyRoute = ServicesLazyRouteImport.update({
-  id: '/services',
-  path: '/services',
-  getParentRoute: () => rootRouteImport,
-} as any).lazy(() => import('./routes/services.lazy').then((d) => d.Route))
-const IdeasLazyRoute = IdeasLazyRouteImport.update({
-  id: '/ideas',
-  path: '/ideas',
-  getParentRoute: () => rootRouteImport,
-} as any).lazy(() => import('./routes/ideas.lazy').then((d) => d.Route))
-const ContactLazyRoute = ContactLazyRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any).lazy(() => import('./routes/contact.lazy').then((d) => d.Route))
-const CareersLazyRoute = CareersLazyRouteImport.update({
-  id: '/careers',
-  path: '/careers',
-  getParentRoute: () => rootRouteImport,
-} as any).lazy(() => import('./routes/careers.lazy').then((d) => d.Route))
-const AboutLazyRoute = AboutLazyRouteImport.update({
-  id: '/about',
-  path: '/about',
-  getParentRoute: () => rootRouteImport,
-} as any).lazy(() => import('./routes/about.lazy').then((d) => d.Route))
-const IndexLazyRoute = IndexLazyRouteImport.update({
+} as any)
+const PublicIndexLazyRoute = PublicIndexLazyRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
+  getParentRoute: () => PublicRoute,
+} as any).lazy(() => import('./routes/_public/index.lazy').then((d) => d.Route))
+const PublicWorkLazyRoute = PublicWorkLazyRouteImport.update({
+  id: '/work',
+  path: '/work',
+  getParentRoute: () => PublicRoute,
+} as any).lazy(() => import('./routes/_public/work.lazy').then((d) => d.Route))
+const PublicServicesLazyRoute = PublicServicesLazyRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => PublicRoute,
+} as any).lazy(() =>
+  import('./routes/_public/services.lazy').then((d) => d.Route),
+)
+const PublicIdeasLazyRoute = PublicIdeasLazyRouteImport.update({
+  id: '/ideas',
+  path: '/ideas',
+  getParentRoute: () => PublicRoute,
+} as any).lazy(() => import('./routes/_public/ideas.lazy').then((d) => d.Route))
+const PublicContactLazyRoute = PublicContactLazyRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => PublicRoute,
+} as any).lazy(() =>
+  import('./routes/_public/contact.lazy').then((d) => d.Route),
+)
+const PublicCareersLazyRoute = PublicCareersLazyRouteImport.update({
+  id: '/careers',
+  path: '/careers',
+  getParentRoute: () => PublicRoute,
+} as any).lazy(() =>
+  import('./routes/_public/careers.lazy').then((d) => d.Route),
+)
+const PublicAboutLazyRoute = PublicAboutLazyRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => PublicRoute,
+} as any).lazy(() => import('./routes/_public/about.lazy').then((d) => d.Route))
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexLazyRoute
-  '/about': typeof AboutLazyRoute
-  '/careers': typeof CareersLazyRoute
-  '/contact': typeof ContactLazyRoute
-  '/ideas': typeof IdeasLazyRoute
-  '/services': typeof ServicesLazyRoute
-  '/work': typeof WorkLazyRoute
+  '/about': typeof PublicAboutLazyRoute
+  '/careers': typeof PublicCareersLazyRoute
+  '/contact': typeof PublicContactLazyRoute
+  '/ideas': typeof PublicIdeasLazyRoute
+  '/services': typeof PublicServicesLazyRoute
+  '/work': typeof PublicWorkLazyRoute
+  '/': typeof PublicIndexLazyRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexLazyRoute
-  '/about': typeof AboutLazyRoute
-  '/careers': typeof CareersLazyRoute
-  '/contact': typeof ContactLazyRoute
-  '/ideas': typeof IdeasLazyRoute
-  '/services': typeof ServicesLazyRoute
-  '/work': typeof WorkLazyRoute
+  '/about': typeof PublicAboutLazyRoute
+  '/careers': typeof PublicCareersLazyRoute
+  '/contact': typeof PublicContactLazyRoute
+  '/ideas': typeof PublicIdeasLazyRoute
+  '/services': typeof PublicServicesLazyRoute
+  '/work': typeof PublicWorkLazyRoute
+  '/': typeof PublicIndexLazyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexLazyRoute
-  '/about': typeof AboutLazyRoute
-  '/careers': typeof CareersLazyRoute
-  '/contact': typeof ContactLazyRoute
-  '/ideas': typeof IdeasLazyRoute
-  '/services': typeof ServicesLazyRoute
-  '/work': typeof WorkLazyRoute
+  '/_public': typeof PublicRouteWithChildren
+  '/_public/about': typeof PublicAboutLazyRoute
+  '/_public/careers': typeof PublicCareersLazyRoute
+  '/_public/contact': typeof PublicContactLazyRoute
+  '/_public/ideas': typeof PublicIdeasLazyRoute
+  '/_public/services': typeof PublicServicesLazyRoute
+  '/_public/work': typeof PublicWorkLazyRoute
+  '/_public/': typeof PublicIndexLazyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
     | '/about'
     | '/careers'
     | '/contact'
     | '/ideas'
     | '/services'
     | '/work'
+    | '/'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
     | '/about'
     | '/careers'
     | '/contact'
     | '/ideas'
     | '/services'
     | '/work'
+    | '/'
   id:
     | '__root__'
-    | '/'
-    | '/about'
-    | '/careers'
-    | '/contact'
-    | '/ideas'
-    | '/services'
-    | '/work'
+    | '/_public'
+    | '/_public/about'
+    | '/_public/careers'
+    | '/_public/contact'
+    | '/_public/ideas'
+    | '/_public/services'
+    | '/_public/work'
+    | '/_public/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexLazyRoute: typeof IndexLazyRoute
-  AboutLazyRoute: typeof AboutLazyRoute
-  CareersLazyRoute: typeof CareersLazyRoute
-  ContactLazyRoute: typeof ContactLazyRoute
-  IdeasLazyRoute: typeof IdeasLazyRoute
-  ServicesLazyRoute: typeof ServicesLazyRoute
-  WorkLazyRoute: typeof WorkLazyRoute
+  PublicRoute: typeof PublicRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/work': {
-      id: '/work'
-      path: '/work'
-      fullPath: '/work'
-      preLoaderRoute: typeof WorkLazyRouteImport
+    '/_public': {
+      id: '/_public'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof PublicRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/services': {
-      id: '/services'
-      path: '/services'
-      fullPath: '/services'
-      preLoaderRoute: typeof ServicesLazyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/ideas': {
-      id: '/ideas'
-      path: '/ideas'
-      fullPath: '/ideas'
-      preLoaderRoute: typeof IdeasLazyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactLazyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/careers': {
-      id: '/careers'
-      path: '/careers'
-      fullPath: '/careers'
-      preLoaderRoute: typeof CareersLazyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutLazyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/': {
-      id: '/'
+    '/_public/': {
+      id: '/_public/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexLazyRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof PublicIndexLazyRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/work': {
+      id: '/_public/work'
+      path: '/work'
+      fullPath: '/work'
+      preLoaderRoute: typeof PublicWorkLazyRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/services': {
+      id: '/_public/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof PublicServicesLazyRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/ideas': {
+      id: '/_public/ideas'
+      path: '/ideas'
+      fullPath: '/ideas'
+      preLoaderRoute: typeof PublicIdeasLazyRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/contact': {
+      id: '/_public/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof PublicContactLazyRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/careers': {
+      id: '/_public/careers'
+      path: '/careers'
+      fullPath: '/careers'
+      preLoaderRoute: typeof PublicCareersLazyRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/about': {
+      id: '/_public/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof PublicAboutLazyRouteImport
+      parentRoute: typeof PublicRoute
     }
   }
 }
 
+interface PublicRouteChildren {
+  PublicAboutLazyRoute: typeof PublicAboutLazyRoute
+  PublicCareersLazyRoute: typeof PublicCareersLazyRoute
+  PublicContactLazyRoute: typeof PublicContactLazyRoute
+  PublicIdeasLazyRoute: typeof PublicIdeasLazyRoute
+  PublicServicesLazyRoute: typeof PublicServicesLazyRoute
+  PublicWorkLazyRoute: typeof PublicWorkLazyRoute
+  PublicIndexLazyRoute: typeof PublicIndexLazyRoute
+}
+
+const PublicRouteChildren: PublicRouteChildren = {
+  PublicAboutLazyRoute: PublicAboutLazyRoute,
+  PublicCareersLazyRoute: PublicCareersLazyRoute,
+  PublicContactLazyRoute: PublicContactLazyRoute,
+  PublicIdeasLazyRoute: PublicIdeasLazyRoute,
+  PublicServicesLazyRoute: PublicServicesLazyRoute,
+  PublicWorkLazyRoute: PublicWorkLazyRoute,
+  PublicIndexLazyRoute: PublicIndexLazyRoute,
+}
+
+const PublicRouteWithChildren =
+  PublicRoute._addFileChildren(PublicRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
-  IndexLazyRoute: IndexLazyRoute,
-  AboutLazyRoute: AboutLazyRoute,
-  CareersLazyRoute: CareersLazyRoute,
-  ContactLazyRoute: ContactLazyRoute,
-  IdeasLazyRoute: IdeasLazyRoute,
-  ServicesLazyRoute: ServicesLazyRoute,
-  WorkLazyRoute: WorkLazyRoute,
+  PublicRoute: PublicRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
