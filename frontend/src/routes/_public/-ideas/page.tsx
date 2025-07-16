@@ -14,7 +14,7 @@ const IdeasPage = () => (
     />
     <section className="w-full bg-white">
       <Provider>
-        <div className="container space-y-4 pt-10 pb-20">
+        <div className="container space-y-6 pt-10 pb-20">
           <Action />
           <Content />
           <Pagination />

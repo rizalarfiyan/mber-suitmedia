@@ -6,7 +6,6 @@ import '@/assets/styles/tailwind.css'
 const router = createRouter({
   routeTree,
   defaultPreload: 'intent',
-  scrollRestoration: true,
 })
 
 declare module '@tanstack/react-router' {
