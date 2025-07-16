@@ -9,7 +9,7 @@ Follow these steps to run the project:
 1. **Clone the repository:**
 
    ```bash
-   git clone <https://github.com/rizalarfiyan/mber-suitmedia>
+   git clone https://github.com/rizalarfiyan/mber-suitmedia
    ```
 
 2. **Navigate to the backend directory:**
@@ -45,9 +45,6 @@ Follow these steps to run the project:
 
 ## Test case
 
-![Test Case 1](./images/test-1.png)
-Or ideone link: [https://ideone.com/tWB0el](https://ideone.com/tWB0el)
-
-![Test Case 1](./images/test-2.png)
-
-Or ideone link: [https://ideone.com/tWB0el](https://ideone.com/tWB0el)
+![Test Case](./images/test.png)
+1. Test dictionary: [https://ideone.com/tWB0el](https://ideone.com/tWB0el)
+2. Test letter: [https://ideone.com/goTeSf](https://ideone.com/goTeSf)
