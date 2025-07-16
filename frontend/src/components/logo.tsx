@@ -2,6 +2,7 @@ import LogoImage from '@/assets/images/logo.png'
 import { APP_NAME } from '@/constants'
 import { cn } from '@/utils/class-name'
 import { Link, useLocation } from '@tanstack/react-router'
+import { memo } from 'react'
 
 type LogoProps = Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'alt' | 'src'>
 
@@ -14,7 +15,7 @@ const BaseLogo = ({ className, ...dest }: LogoProps) => (
   />
 )
 
-const Logo = ({ ...dest }: LogoProps) => {
+const Logo = memo(({ ...dest }: LogoProps) => {
   const pathname = useLocation({
     select: location => location.pathname,
   })
@@ -29,6 +30,6 @@ const Logo = ({ ...dest }: LogoProps) => {
       <span className="sr-only">{APP_NAME}</span>
     </Link>
   )
-}
+})
 
 export default Logo

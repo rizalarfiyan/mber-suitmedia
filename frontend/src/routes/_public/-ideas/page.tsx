@@ -1,13 +1,18 @@
+import Banner from '@/components/banner'
+
 const IdeasPage = () => (
-  <main className="w-full flex-1">
-    <section className="flex h-full flex-1 items-center justify-center">
-      <h1 className="text-4xl font-semibold text-slate-800">Ideas Page!</h1>
-    </section>
+  <>
+    <Banner
+      image="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8fGVufDB8fHx8fA%3D%3D"
+      title="Ideas"
+      description="Where all our great things design"
+      hasDivider
+    />
+    <section className="h-full min-h-screen w-full bg-white"></section>
     <section className="h-full min-h-screen w-full bg-slate-50"></section>
-    <section className="h-full min-h-screen w-full bg-slate-100"></section>
+    <section className="h-full min-h-screen w-full bg-white"></section>
     <section className="h-full min-h-screen w-full bg-slate-50"></section>
-    <section className="h-full min-h-screen w-full bg-slate-100"></section>
-  </main>
+  </>
 )
 
 export default IdeasPage
