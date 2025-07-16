@@ -12,13 +12,13 @@ func TestDictionary(t *testing.T) {
 	t.Logf("Create new dictionary...\n")
 	t.Logf("Add new data:\n")
 
-	t.Logf("big => large, great\n")
+	t.Logf("- big => large, great\n")
 	dic.Add("big", []string{"large", "great"})
 
-	t.Logf("big => huge, fat\n")
+	t.Logf("- big => huge, fat\n")
 	dic.Add("big", []string{"huge", "fat"})
 
-	t.Logf("huge => enormous, gigantic\n")
+	t.Logf("- huge => enormous, gigantic\n")
 	dic.Add("huge", []string{"enormous", "gigantic"})
 
 	t.Logf("Running 5 tests...\n")
