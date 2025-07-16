@@ -12,11 +12,11 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as PublicRouteImport } from './routes/_public'
+import { Route as PublicIdeasRouteImport } from './routes/_public/ideas'
 
 const PublicIndexLazyRouteImport = createFileRoute('/_public/')()
 const PublicWorkLazyRouteImport = createFileRoute('/_public/work')()
 const PublicServicesLazyRouteImport = createFileRoute('/_public/services')()
-const PublicIdeasLazyRouteImport = createFileRoute('/_public/ideas')()
 const PublicContactLazyRouteImport = createFileRoute('/_public/contact')()
 const PublicCareersLazyRouteImport = createFileRoute('/_public/careers')()
 const PublicAboutLazyRouteImport = createFileRoute('/_public/about')()
@@ -42,11 +42,6 @@ const PublicServicesLazyRoute = PublicServicesLazyRouteImport.update({
 } as any).lazy(() =>
   import('./routes/_public/services.lazy').then((d) => d.Route),
 )
-const PublicIdeasLazyRoute = PublicIdeasLazyRouteImport.update({
-  id: '/ideas',
-  path: '/ideas',
-  getParentRoute: () => PublicRoute,
-} as any).lazy(() => import('./routes/_public/ideas.lazy').then((d) => d.Route))
 const PublicContactLazyRoute = PublicContactLazyRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -66,21 +61,26 @@ const PublicAboutLazyRoute = PublicAboutLazyRouteImport.update({
   path: '/about',
   getParentRoute: () => PublicRoute,
 } as any).lazy(() => import('./routes/_public/about.lazy').then((d) => d.Route))
+const PublicIdeasRoute = PublicIdeasRouteImport.update({
+  id: '/ideas',
+  path: '/ideas',
+  getParentRoute: () => PublicRoute,
+} as any).lazy(() => import('./routes/_public/ideas.lazy').then((d) => d.Route))
 
 export interface FileRoutesByFullPath {
+  '/ideas': typeof PublicIdeasRoute
   '/about': typeof PublicAboutLazyRoute
   '/careers': typeof PublicCareersLazyRoute
   '/contact': typeof PublicContactLazyRoute
-  '/ideas': typeof PublicIdeasLazyRoute
   '/services': typeof PublicServicesLazyRoute
   '/work': typeof PublicWorkLazyRoute
   '/': typeof PublicIndexLazyRoute
 }
 export interface FileRoutesByTo {
+  '/ideas': typeof PublicIdeasRoute
   '/about': typeof PublicAboutLazyRoute
   '/careers': typeof PublicCareersLazyRoute
   '/contact': typeof PublicContactLazyRoute
-  '/ideas': typeof PublicIdeasLazyRoute
   '/services': typeof PublicServicesLazyRoute
   '/work': typeof PublicWorkLazyRoute
   '/': typeof PublicIndexLazyRoute
@@ -88,10 +88,10 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_public': typeof PublicRouteWithChildren
+  '/_public/ideas': typeof PublicIdeasRoute
   '/_public/about': typeof PublicAboutLazyRoute
   '/_public/careers': typeof PublicCareersLazyRoute
   '/_public/contact': typeof PublicContactLazyRoute
-  '/_public/ideas': typeof PublicIdeasLazyRoute
   '/_public/services': typeof PublicServicesLazyRoute
   '/_public/work': typeof PublicWorkLazyRoute
   '/_public/': typeof PublicIndexLazyRoute
@@ -99,29 +99,29 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
+    | '/ideas'
     | '/about'
     | '/careers'
     | '/contact'
-    | '/ideas'
     | '/services'
     | '/work'
     | '/'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/ideas'
     | '/about'
     | '/careers'
     | '/contact'
-    | '/ideas'
     | '/services'
     | '/work'
     | '/'
   id:
     | '__root__'
     | '/_public'
+    | '/_public/ideas'
     | '/_public/about'
     | '/_public/careers'
     | '/_public/contact'
-    | '/_public/ideas'
     | '/_public/services'
     | '/_public/work'
     | '/_public/'
@@ -161,13 +161,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicServicesLazyRouteImport
       parentRoute: typeof PublicRoute
     }
-    '/_public/ideas': {
-      id: '/_public/ideas'
-      path: '/ideas'
-      fullPath: '/ideas'
-      preLoaderRoute: typeof PublicIdeasLazyRouteImport
-      parentRoute: typeof PublicRoute
-    }
     '/_public/contact': {
       id: '/_public/contact'
       path: '/contact'
@@ -189,24 +182,31 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PublicAboutLazyRouteImport
       parentRoute: typeof PublicRoute
     }
+    '/_public/ideas': {
+      id: '/_public/ideas'
+      path: '/ideas'
+      fullPath: '/ideas'
+      preLoaderRoute: typeof PublicIdeasRouteImport
+      parentRoute: typeof PublicRoute
+    }
   }
 }
 
 interface PublicRouteChildren {
+  PublicIdeasRoute: typeof PublicIdeasRoute
   PublicAboutLazyRoute: typeof PublicAboutLazyRoute
   PublicCareersLazyRoute: typeof PublicCareersLazyRoute
   PublicContactLazyRoute: typeof PublicContactLazyRoute
-  PublicIdeasLazyRoute: typeof PublicIdeasLazyRoute
   PublicServicesLazyRoute: typeof PublicServicesLazyRoute
   PublicWorkLazyRoute: typeof PublicWorkLazyRoute
   PublicIndexLazyRoute: typeof PublicIndexLazyRoute
 }
 
 const PublicRouteChildren: PublicRouteChildren = {
+  PublicIdeasRoute: PublicIdeasRoute,
   PublicAboutLazyRoute: PublicAboutLazyRoute,
   PublicCareersLazyRoute: PublicCareersLazyRoute,
   PublicContactLazyRoute: PublicContactLazyRoute,
-  PublicIdeasLazyRoute: PublicIdeasLazyRoute,
   PublicServicesLazyRoute: PublicServicesLazyRoute,
   PublicWorkLazyRoute: PublicWorkLazyRoute,
   PublicIndexLazyRoute: PublicIndexLazyRoute,

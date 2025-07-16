@@ -11,7 +11,7 @@ interface BannerProps {
 }
 
 const Banner = ({ image, hasDivider, className, title, description }: BannerProps) => (
-  <div
+  <section
     className={cn(
       'relative mx-auto -mt-[4.5rem] flex h-[32rem] w-full items-center justify-center overflow-hidden',
       className,
@@ -24,7 +24,7 @@ const Banner = ({ image, hasDivider, className, title, description }: BannerProp
       <p className="text-center text-lg text-white md:text-xl">{description}</p>
     </div>
     {hasDivider && <Divider className="z-10 text-white" />}
-  </div>
+  </section>
 )
 
 export default Banner

@@ -16,6 +16,8 @@
     },
     "dependencies": {
         "@tanstack/react-router": "^1.127.9",
+        "axios": "^1.10.0",
+        "axios-hooks": "^5.1.1",
         "clsx": "^2.1.1",
         "lucide-react": "^0.525.0",
         "react": "^19.1.0",

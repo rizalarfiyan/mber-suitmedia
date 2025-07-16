@@ -1,3 +1,7 @@
+import Action from './components/action'
+import Content from './components/list-card'
+import Pagination from './components/pagination'
+import Provider from './provider'
 import Banner from '@/components/banner'
 
 const IdeasPage = () => (
@@ -8,10 +12,15 @@ const IdeasPage = () => (
       description="Where all our great things design"
       hasDivider
     />
-    <section className="h-full min-h-screen w-full bg-white"></section>
-    <section className="h-full min-h-screen w-full bg-slate-50"></section>
-    <section className="h-full min-h-screen w-full bg-white"></section>
-    <section className="h-full min-h-screen w-full bg-slate-50"></section>
+    <section className="w-full bg-white">
+      <Provider>
+        <div className="container space-y-4 pt-10 pb-20">
+          <Action />
+          <Content />
+          <Pagination />
+        </div>
+      </Provider>
+    </section>
   </>
 )
 
