@@ -42,7 +42,7 @@ const Select = <T extends string | number>({
   const internalValue = value !== undefined ? value : defaultValue
 
   return (
-    <div className={cn('flex w-full items-center gap-4', containerClassName)}>
+    <div className={cn('flex items-center gap-4', containerClassName)}>
       <label htmlFor={id} className={cn('text-secondary-700 font-medium whitespace-nowrap', labelClassName)}>
         {label}
       </label>

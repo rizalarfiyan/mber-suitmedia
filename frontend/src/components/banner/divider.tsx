@@ -8,7 +8,7 @@ const Divider = ({ className, ...rest }: DividerProps) => (
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 1200 120"
       preserveAspectRatio="none"
-      className="relative block h-44 w-[calc(100%+1.3px)] [transform:rotateY(180deg)] fill-current">
+      className="relative block h-32 w-[calc(100%+2px)] [transform:rotateY(180deg)] fill-current sm:h-44">
       <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z"></path>
     </svg>
   </div>

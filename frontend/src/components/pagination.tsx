@@ -30,7 +30,7 @@ const Pagination = ({ to, page, perPage, total, isDisabled }: PaginationProps) =
 
   return (
     <nav aria-label="Page navigation">
-      <ul className="flex items-center space-x-2 text-sm">
+      <ul className="flex items-center gap-2 text-sm">
         <li>
           <Link
             to={to}
@@ -55,16 +55,19 @@ const Pagination = ({ to, page, perPage, total, isDisabled }: PaginationProps) =
             <ChevronLeft className="size-4" />
           </Link>
         </li>
+        <li className="block sm:hidden">
+          <span className="text-secondary-500 flex h-9 items-center justify-center px-4">{DOTS}</span>
+        </li>
         {paginationRange.map((pageNumber, index) => {
           if (pageNumber === DOTS) {
             return (
-              <li key={`${DOTS}-${index}`}>
+              <li key={`${DOTS}-${index}`} className="hidden sm:block">
                 <span className="text-secondary-500 flex h-9 items-center justify-center px-4">{DOTS}</span>
               </li>
             )
           }
           return (
-            <li key={pageNumber}>
+            <li key={pageNumber} className="hidden sm:flex">
               <Link
                 to={to}
                 search={prev => ({ ...prev, page: pageNumber })}
