@@ -15,7 +15,7 @@ const Footer = () => {
           href="https://github.com/rizalarfiyan"
           target="_blank"
           rel="noopener noreferrer">
-          Rizal Arfiyan
+          Muhamad Rizal Arfiyan
         </a>
       </div>
     </footer>

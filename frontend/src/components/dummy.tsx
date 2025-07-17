@@ -12,7 +12,14 @@ const Dummy = ({ title }: DummyProps) => (
       <h1 className="text-secondary-800 text-4xl font-semibold">{title}</h1>
       <p className="text-secondary-500 mx-auto max-w-xs text-center">
         <span>This is a placeholder page. Check out our </span>
-        <Link to="/ideas" className="text-primary-600 decoration-primary-600 underline underline-offset-2">
+        <Link
+          to="/ideas"
+          search={{
+            page: undefined,
+            sort: undefined,
+            perPage: undefined,
+          }}
+          className="text-primary-600 decoration-primary-600 underline underline-offset-2">
           ideas
         </Link>
         <span> pages to explore more.</span>
