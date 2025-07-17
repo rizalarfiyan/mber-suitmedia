@@ -2,7 +2,7 @@ import { dateFormat } from '@/utils/date'
 import type { IdeasResponse } from '../types'
 
 const Card = ({ title, published_at, small_image }: IdeasResponse) => (
-  <div className="flex flex-col items-center justify-center overflow-hidden rounded-md border border-red-600">
+  <div className="border-secondary-200 shadow-card flex flex-col items-center justify-center overflow-hidden rounded-md border">
     <div className="bg-secondary-100 aspect-video h-auto w-full">
       <img src={small_image?.[0]?.url} alt={title} />
     </div>

@@ -14,9 +14,13 @@ const Action = () => {
 
   return (
     <div className="flex items-center justify-between gap-4">
-      <div>
-        Showing {page} - {Math.ceil(totalPage / perPage) || 0} of {totalPage}
-      </div>
+      {isLoading ? (
+        <div className="bg-secondary-200 h-6 w-full max-w-60 animate-pulse rounded-md"></div>
+      ) : (
+        <div>
+          Showing {page} - {Math.ceil(totalPage / perPage) || 0} of {totalPage}
+        </div>
+      )}
       <div className="flex items-center justify-center gap-4">
         <Select
           onValueChange={val => updateQuery('perPage', val)}

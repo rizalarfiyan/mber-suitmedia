@@ -1,4 +1,5 @@
 import Action from './components/action'
+import ErrorWrapper from './components/error-wrapper'
 import Content from './components/list-card'
 import Pagination from './components/pagination'
 import Provider from './provider'
@@ -15,9 +16,11 @@ const IdeasPage = () => (
     <section className="w-full bg-white">
       <Provider>
         <div className="container space-y-6 pt-10 pb-20">
-          <Action />
-          <Content />
-          <Pagination />
+          <ErrorWrapper>
+            <Action />
+            <Content />
+            <Pagination />
+          </ErrorWrapper>
         </div>
       </Provider>
     </section>

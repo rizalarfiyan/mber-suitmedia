@@ -9,9 +9,10 @@ interface PaginationProps {
   page: number
   perPage: number
   total: number
+  isDisabled?: boolean
 }
 
-const Pagination = ({ to, page, perPage, total }: PaginationProps) => {
+const Pagination = ({ to, page, perPage, total, isDisabled }: PaginationProps) => {
   const totalPages = Math.ceil(total / perPage)
   const paginationRange = usePagination({ currentPage: page, total, perPage })
 
@@ -35,7 +36,7 @@ const Pagination = ({ to, page, perPage, total }: PaginationProps) => {
             to={to}
             search={prev => ({ ...prev, page: 1 })}
             className={cn(buttonClasses, {
-              [disabledClasses]: page === 1,
+              [disabledClasses]: page === 1 || isDisabled,
             })}
             disabled={page === 1}
             aria-disabled={page === 1}>
@@ -47,7 +48,7 @@ const Pagination = ({ to, page, perPage, total }: PaginationProps) => {
             to={to}
             search={prev => ({ ...prev, page: page - 1 })}
             className={cn(buttonClasses, {
-              [disabledClasses]: page === 1,
+              [disabledClasses]: page === 1 || isDisabled,
             })}
             disabled={page === 1}
             aria-disabled={page === 1}>
@@ -69,6 +70,7 @@ const Pagination = ({ to, page, perPage, total }: PaginationProps) => {
                 search={prev => ({ ...prev, page: pageNumber })}
                 className={cn(buttonClasses, {
                   [activeClasses]: page === pageNumber,
+                  [disabledClasses]: isDisabled,
                 })}>
                 {pageNumber}
               </Link>
@@ -80,7 +82,7 @@ const Pagination = ({ to, page, perPage, total }: PaginationProps) => {
             to={to}
             search={prev => ({ ...prev, page: page + 1 })}
             className={cn(buttonClasses, {
-              [disabledClasses]: page === totalPages,
+              [disabledClasses]: page === totalPages || isDisabled,
             })}
             disabled={page === totalPages}
             aria-disabled={page === totalPages}>
@@ -92,7 +94,7 @@ const Pagination = ({ to, page, perPage, total }: PaginationProps) => {
             to={to}
             search={prev => ({ ...prev, page: totalPages })}
             className={cn(buttonClasses, {
-              [disabledClasses]: page === totalPages,
+              [disabledClasses]: page === totalPages || isDisabled,
             })}
             disabled={page === totalPages}
             aria-disabled={page === totalPages}>
