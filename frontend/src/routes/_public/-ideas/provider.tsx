@@ -2,7 +2,7 @@ import { DEFAULT_PAGE_SIZE, DEFAULT_SORT } from '@/constants'
 import { useAxios } from '@/libs/axios'
 import { Route } from '@/routes/_public/ideas'
 import { createContext, useMemo } from 'react'
-import type { IdeasResponse } from './types'
+import type { IdeasItem, IdeasResponse } from './types'
 import type { ListResponse, SortType } from '@/types'
 import type { PropsWithChildren } from 'react'
 
@@ -13,7 +13,7 @@ interface PageContextProps {
   isLoading: boolean
   error?: string
   totalPage: number
-  data: IdeasResponse[]
+  data: IdeasItem[]
 }
 
 const PageContext = createContext<PageContextProps | undefined>(undefined)
@@ -58,7 +58,18 @@ const Provider = ({ children }: PropsWithChildren) => {
       isLoading: loading,
       error: error ? 'Failed to fetch ideas data' : undefined,
       totalPage: data?.meta?.total || 0,
-      data: data?.data || [],
+      data: (data?.data || []).map(
+        (val): IdeasItem => ({
+          id: val.id,
+          slug: val.slug,
+          title: val.title,
+          published_at: val.published_at,
+          image: {
+            small: val?.small_image?.[0].url,
+            medium: val?.medium_image?.[0].url,
+          },
+        }),
+      ),
     }),
     [perPage, page, sort, error, loading, data],
   )

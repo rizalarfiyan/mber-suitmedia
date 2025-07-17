@@ -1,3 +1,5 @@
+import type { ImageSize } from '@/types'
+
 export interface IdeasResponse {
   id: number
   slug: string
@@ -17,4 +19,12 @@ export interface ImageResponse {
   mime: string
   file_name: string
   url: string
+}
+
+export interface IdeasItem {
+  id: number
+  slug: string
+  title: string
+  published_at: string
+  image: Partial<ImageSize>
 }
