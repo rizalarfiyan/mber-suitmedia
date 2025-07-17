@@ -1,11 +1,18 @@
+import '@/assets/styles/tailwind.css'
 import { routeTree } from './routeTree.gen'
+import LoadingScreen from '@/components/loading-screen'
+import NotFound from '@/components/not-found'
 import { RouterProvider, createRouter } from '@tanstack/react-router'
 import { createRoot } from 'react-dom/client'
-import '@/assets/styles/tailwind.css'
 
 const router = createRouter({
   routeTree,
   defaultPreload: 'intent',
+  defaultPreloadStaleTime: 0,
+  defaultPendingMinMs: 0,
+  defaultPendingComponent: () => <LoadingScreen />,
+  defaultNotFoundComponent: NotFound,
+  notFoundMode: 'root',
 })
 
 declare module '@tanstack/react-router' {

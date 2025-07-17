@@ -65,8 +65,8 @@ const Provider = ({ children }: PropsWithChildren) => {
           title: val.title,
           published_at: val.published_at,
           image: {
-            small: val?.small_image?.[0].url,
-            medium: val?.medium_image?.[0].url,
+            small: val?.small_image?.[0]?.url,
+            medium: val?.medium_image?.[0]?.url,
           },
         }),
       ),

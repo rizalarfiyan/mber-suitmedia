@@ -9,7 +9,12 @@ const Action = () => {
   const navigate = useNavigate({ from: Route.fullPath })
 
   const updateQuery = (name: string, value: unknown) => {
-    navigate({ search: prev => ({ ...prev, [name]: value }) })
+    navigate({
+      search: prev => {
+        if (name === 'perPage') prev.page = 1
+        return { ...prev, [name]: value }
+      },
+    })
   }
 
   return (
