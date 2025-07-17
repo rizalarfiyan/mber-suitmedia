@@ -16,13 +16,15 @@ const Banner = ({ image, hasDivider, className, title, description }: BannerProp
       'relative mx-auto -mt-[4.5rem] flex h-[32rem] w-full items-center justify-center overflow-hidden',
       className,
     )}>
-    <SimpleParallax delay={1} scale={1.7}>
-      <img
-        src={image}
-        alt={`Banner of ${title}`}
-        className="h-full w-auto max-w-none sm:h-auto sm:w-full sm:max-w-full"
-      />
-    </SimpleParallax>
+    <div className="w-full">
+      <SimpleParallax delay={1}>
+        <img
+          src={image}
+          alt={`Banner of ${title}`}
+          className="h-full w-auto max-w-none sm:h-auto sm:w-full sm:max-w-full"
+        />
+      </SimpleParallax>
+    </div>
     <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 bg-black/70 p-4">
       <h1 className="text-center text-3xl font-bold text-white md:text-4xl">{title}</h1>
       <p className="text-center text-lg text-white md:text-xl">{description}</p>

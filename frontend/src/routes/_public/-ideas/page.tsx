@@ -7,12 +7,7 @@ import Banner from '@/components/banner'
 
 const IdeasPage = () => (
   <>
-    <Banner
-      image="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8fGVufDB8fHx8fA%3D%3D"
-      title="Ideas"
-      description="Where all our great things design"
-      hasDivider
-    />
+    <Banner image="/assets/images/ideas.jpg" title="Ideas" description="Where all our great things design" hasDivider />
     <section className="w-full bg-white">
       <Provider>
         <div className="container space-y-6 pt-5 pb-10 sm:pt-10 sm:pb-20">
