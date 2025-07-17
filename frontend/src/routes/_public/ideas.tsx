@@ -3,7 +3,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import type { PageSizeType, SortType } from '@/types'
 
 export const Route = createFileRoute('/_public/ideas')({
-  validateSearch: (search: Record<string, string>) => {
+  validateSearch: (search: Record<string, string>): undefined | object => {
     let sort = search['sort'] as SortType | undefined
     if (sort && !SORTS.includes(sort)) {
       sort = undefined

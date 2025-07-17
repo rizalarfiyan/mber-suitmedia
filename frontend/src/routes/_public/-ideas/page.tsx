@@ -15,7 +15,7 @@ const IdeasPage = () => (
     />
     <section className="w-full bg-white">
       <Provider>
-        <div className="container space-y-6 pt-10 pb-20">
+        <div className="container space-y-6 pt-5 pb-10 sm:pt-10 sm:pb-20">
           <ErrorWrapper>
             <Action />
             <Content />

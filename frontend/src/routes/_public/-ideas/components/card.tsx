@@ -14,7 +14,7 @@ const Card = ({ slug, title, published_at, image }: IdeasItem) => (
       />
     </div>
     <div className="w-full flex-1 space-y-1.5 p-5">
-      <p className="text-sm text-gray-500">{dateFormat(published_at)}</p>
+      <p className="text-secondary-500 text-sm">{dateFormat(published_at)}</p>
       <a href={`/ideas/${slug}`} target="_blank" rel="noopener noreferrer">
         <h3 className="hover:text-primary-600 decoration-primary-600 line-clamp-3 text-xl leading-tight font-semibold underline-offset-2 transition-colors duration-300 group-hover:underline hover:underline">
           {title}

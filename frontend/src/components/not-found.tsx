@@ -1,13 +1,12 @@
+import Ornament from './ornament'
 import { Link } from '@tanstack/react-router'
 import { ArrowLeft } from 'lucide-react'
 
 const NotFound = () => (
   <main className="relative overflow-hidden">
-    <div className="from-primary-100 absolute inset-0 bg-gradient-to-br via-white to-orange-100 opacity-50" />
-    <div className="bg-primary-200/30 absolute -top-20 -left-20 size-96 rounded-full blur-2xl" />
-    <div className="absolute -right-20 -bottom-20 size-96 rounded-full bg-orange-200/30 blur-2xl" />
+    <Ornament />
     <div className="relative z-10 mx-auto flex h-screen max-w-screen-xl items-center justify-start px-4 md:px-8">
-      <div className="mx-auto max-w-lg space-y-6 text-center">
+      <div className="mx-auto max-w-lg space-y-6 py-10 text-center">
         <div className="max-w-sm space-y-3">
           <h2 className="text-4xl font-bold tracking-tight lg:text-5xl">Page Not Found</h2>
           <p className="text-secondary-600">
